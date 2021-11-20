@@ -385,5 +385,5 @@ if __name__ == "__main__":
         name="Main task call here",
         task=main,
     )
-    print_result(result)
+#    print_result(result)
     # ipdb.set_trace()

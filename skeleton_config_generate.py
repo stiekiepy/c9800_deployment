@@ -123,4 +123,4 @@ if __name__ == "__main__":
         task=switch_interfaces,
     )
 
-    print_result(result)
+#    print_result(result)
