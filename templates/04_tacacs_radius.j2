@@ -1,0 +1,49 @@
+aaa new-model
+!
+!
+tacacs server {{  ise_server1 }}
+ address ipv4 {{  ise_server1 }}
+ key {{ tacacs_key }}
+tacacs server {{  ise_server2 }}
+ address ipv4 {{  ise_server2 }}
+ key {{ tacacs_key }}
+!
+!
+!
+radius server {{  ise_server1 }}
+ address ipv4 {{  ise_server1 }} auth-port 1812 acct-port 1813
+ key {{ radius_key }}
+!
+radius server {{  ise_server2 }}
+ address ipv4 {{  ise_server2 }} auth-port 1812 acct-port 1813
+ key {{ radius_key }}
+
+
+aaa group server tacacs+ TAC_GROUP
+ server name {{  ise_server1 }}
+ server name {{  ise_server2 }}
+!
+aaa group server radius RAD_GROUP
+ server name {{  ise_server1 }}
+ server name {{  ise_server2 }}
+ deadtime 5
+!
+aaa authentication login {{ tac_auth_me }} local group TAC_GROUP
+aaa authentication enable default group TAC_GROUP enable
+aaa authentication dot1x {{ rad_auth_me }} group RAD_GROUP
+aaa authorization exec {{ tac_authz_me }} local group TAC_GROUP 
+aaa authorization network {{ rad_authz_me }} group RAD_GROUP 
+aaa accounting identity {{ rad_acct_me }} start-stop group RAD_GROUP
+aaa accounting exec {{ tac_acct_me }} start-stop group TAC_GROUP
+!
+!
+!
+!
+!
+aaa server radius dynamic-author
+ client 10.70.34.55 server-key eYbo@xPqwq#%VuM7
+ client 10.60.3.1 server-key eYbo@xPqwq#%VuM7
+!
+aaa session-id common
+
+

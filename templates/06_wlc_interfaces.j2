@@ -1,0 +1,36 @@
+interface {{ wlc_sw_intf_1 }}
+description {{ core_sw_name }}: {{ core_sw_intf_1 }}
+switchport trunk allowed vlan {{ client_vlan }},{{ wmi_vlan }},{{ guest_vlan }}
+switchport mode trunk
+negotiation auto
+no snmp trap link-status
+cdp enable
+channel-group {{ lag_intf }} mode active
+no shut
+
+interface {{ wlc_sw_intf_2 }}
+description {{ core_sw_name }}: {{ core_sw_intf_2 }}
+switchport trunk allowed vlan {{ client_vlan }},{{ wmi_vlan }},{{ guest_vlan }}
+switchport mode trunk
+negotiation auto
+no snmp trap link-status
+cdp enable
+channel-group {{ lag_intf }} mode active
+no shut
+
+interface po{{ lag_intf }}
+description {{ core_sw_name }}
+switchport trunk allowed vlan {{ client_vlan }},{{ wmi_vlan }},{{ guest_vlan }}
+switchport mode trunk
+no shut
+
+
+int vlan {{ wmi_vlan }}
+description Wireless Mgmt Interface
+ip add {{ wmi_ip }} {{ wmi_mask }}
+no shut
+
+
+ip route 0.0.0.0 0.0.0.0 {{ wmi_gw }}
+
+wireless management interface Vlan{{ wmi_vlan }}

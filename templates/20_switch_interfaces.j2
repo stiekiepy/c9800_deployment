@@ -1,0 +1,110 @@
+
+#
+## mgmt
+#
+interface {{ core_sw_mgmt_1 }}
+ description {{ country }}-{{ location_abbr }}-P-WC-CTL-001-IT mgmt
+ switchport access vlan {{ wmi_vlan }}
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+ no shut
+
+interface {{ core_sw_mgmt_2 }}
+ description {{ country }}-{{ location_abbr }}-P-WC-CTL-002-IT mgmt
+ switchport access vlan {{ wmi_vlan }}
+ switchport mode access
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+ no shut
+
+
+!
+!! DATA INTERFACES
+!
+! WLC 1
+!
+interface {{ core_sw_intf_1 }}
+ description {{ wlc_name }}
+ switchport trunk allowed vlan {{ client_vlan }},{{ wmi_vlan }},{{ guest_vlan }}
+ switchport mode trunk
+ channel-group {{ core_lag_intf1 }} mode active
+ no shut
+
+interface {{ core_sw_intf_2 }}
+ description {{ wlc_name }}
+ switchport trunk allowed vlan {{ client_vlan }},{{ wmi_vlan }},{{ guest_vlan }}
+ switchport mode trunk
+ channel-group {{ core_lag_intf1 }} mode active
+ no shut
+
+interface Port-channel{{ core_lag_intf1 }}
+ description {{ wlc_name }}
+ switchport trunk allowed vlan {{ client_vlan }},{{ wmi_vlan }},{{ guest_vlan }}
+ switchport mode trunk
+ spanning-tree portfast trunk
+ no shut
+
+
+!
+! WLC 2
+!
+interface {{ core_sw_intf_3 }}
+ description {{ wlc_name2 }}
+ switchport trunk allowed vlan {{ client_vlan }},{{ wmi_vlan }},{{ guest_vlan }}
+ switchport mode trunk
+ channel-group {{ core_lag_intf2 }} mode active
+ no shut
+
+interface {{ core_sw_intf_4 }}
+ description {{ wlc_name2 }}
+ switchport trunk allowed vlan {{ client_vlan }},{{ wmi_vlan }},{{ guest_vlan }}
+ switchport mode trunk
+ channel-group {{ core_lag_intf2 }} mode active
+ no shut
+
+interface Port-channel{{ core_lag_intf2 }}
+ description {{ wlc_name2 }}
+ switchport trunk allowed vlan {{ client_vlan }},{{ wmi_vlan }},{{ guest_vlan }}
+ switchport mode trunk
+ spanning-tree portfast trunk
+ no shut
+
+
+#
+## SVIs for vlans
+#
+interface Vlan{{ client_vlan }}
+ description {{ client_vname }}
+ ip address {{ client_vlan_gw }} {{ client_vlan_mask }}
+ ip helper-address 10.70.34.68
+ ip helper-address 10.70.34.69
+ ip ospf network broadcast
+ ip ospf 100 area 0
+ no shut
+
+interface Vlan{{ ap_vlan }}
+ description {{ ap_vname }}
+ ip address {{ ap_vlan_gw }} {{ ap_vlan_mask }}
+ ip helper-address 10.70.34.68
+ ip helper-address 10.70.34.69
+ ip ospf network broadcast
+ ip ospf 100 area 0
+ no shut
+
+!
+!! External RP ports
+!
+!interface {{ core_sw_intf_red_1 }}
+! description RP port {{ wlc_name }}
+! switchport access vlan 950
+! switchport mode access
+! spanning-tree portfast
+! no shut
+
+!interface {{ core_sw_intf_red_2 }}
+! description RP port {{ wlc_name2 }}
+! switchport access vlan 950
+! switchport mode access
+1 spanning-tree portfast
+! no shut

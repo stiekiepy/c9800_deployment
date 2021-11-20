@@ -1,0 +1,13 @@
+---
+username: stian
+password: stian
+data:
+    prime_server: 10.71.197.99
+    tacacs_key: digforGold
+    radius_key: myradiusPassw0rd
+    tac_auth_me: tacAutheMethod
+    tac_authz_me: tacAutheZMethod
+    tac_acct_me: tacAccMethod
+    rad_auth_me: radAutheMethod
+    rad_authz_me: radAutheZMethod
+    rad_acct_me: radAccMethod

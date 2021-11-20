@@ -1,0 +1,71 @@
+---
+c9800_1:
+  hostname: 10.0.0.10
+  groups:
+    - cisco_ios
+    - ccv
+    - nam
+  data:
+    country: US
+    location_name: DEO Office
+    location_abbr: DEO
+    oob_ip: 10.0.0.10
+    oob_gw: 10.0.0.1
+    oob_mask: 255.255.255.0
+    admin: wlcadmin
+    admin_passw: wlcpassword
+    wlc_name: US-STIAN-P-WC-CTL-001-IT
+    wlc_name2: US-STIAN-P-WC-CTL-002-IT
+    domain_name: stianliebenberg.com
+    ap_vlan: 330
+    ap_vname: wireless-ap-vlan
+    ap_vlan_gw: 192.168.1.254
+    ap_vlan_mask: 255.255.254.0
+    client_vlan: 320
+    client_vname: nem-wrl-usr
+    client_vlan_gw: 10.19.114.254
+    client_vlan_mask: 255.255.255.0
+    guest_vlan: 420
+    guest_vname: nem-guestwifi
+    wmi_vlan: 99
+    wmi_vname: IN-BAND-MANAGEMENT
+    wmi_ip: 1.1.1.1
+    wmi_mask: 255.255.255.0
+    wmi_gw: 1.1.1.254
+    redun_ip_1: 169.254.0.1
+    redun_ip_2: 169.254.0.2
+    redund_ip_mask: /24
+    core_sw_name: US-STIAN-P-COL-P-IT
+    core_sw_mgmt_1: FiveGigabitEthernet1/0/39
+    core_sw_mgmt_2: FiveGigabitEthernet2/0/39
+    core_sw_intf_1: FiveGigabitEthernet1/0/40
+    core_sw_intf_2: FiveGigabitEthernet2/0/40
+    core_lag_intf1: 40
+    core_sw_intf_3: FiveGigabitEthernet1/0/41
+    core_sw_intf_4: FiveGigabitEthernet2/0/41
+    core_lag_intf2: 41
+    core_sw_intf_red_1: FiveGigabitEthernet1/0/42
+    core_sw_intf_red_2: FiveGigabitEthernet1/0/43
+    wlc_sw_intf_1: TwoGigabitEthernet0/0/0
+    wlc_sw_intf_2: TwoGigabitEthernet0/0/1
+    lag_intf: 10
+    timezone: MST
+
+#
+## Only use these configs to generate the skeleton config
+#
+c9800_2:
+  hostname: 10.0.0.12
+  groups:
+    - cisco_ios
+    - ccv
+    - nam
+  data:
+    country: US
+    oob_ip: 10.0.0.12
+    oob_gw: 10.0.0.1
+    oob_mask: 255.255.255.0
+    admin: wlcadmin
+    admin_passw: wlcpassword
+    wlc_name: US-STIAN-P-WC-CTL-002-IT
+    domain_name: stianliebenberg.com

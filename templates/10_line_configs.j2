@@ -1,0 +1,14 @@
+line con 0
+ exec-timeout 0 0
+ stopbits 1
+line aux 0
+ stopbits 1
+line vty 0 4
+ authorization exec {{ tac_authz_me }}
+ login authentication {{ tac_auth_me }}
+ length 0
+ transport input ssh
+line vty 5 15
+ authorization exec {{ tac_authz_me }}
+ login authentication {{ tac_auth_me }}
+ transport input ssh

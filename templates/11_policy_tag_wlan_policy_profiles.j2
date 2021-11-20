@@ -1,0 +1,53 @@
+! ### CREATE POLICY PROFILE AND WLAN PROFILE ###
+!
+! ### POLICY PROFILES
+! 
+
+wireless profile policy {{ location_abbr }}-POLICY-PR
+ description "{{ location_abbr }} data WLAN Policy Profile"
+ dhcp-tlv-caching
+ http-tlv-caching
+ ipv4 dhcp required
+ vlan {{ client_vname }}
+ no shutdown
+
+wireless profile policy {{ location_abbr }}_CWA_LOCAL_INET_PR
+ aaa-override
+ accounting-list {{ rad_acct_me }}
+ description "Local Internet Connection"
+ nac
+ vlan {{ guest_vname }}
+ no shutdown
+
+
+! ### WLAN PROFILES ###
+!
+! # NEM-WRL-USR
+!
+aaa attribute list wlan_lobby_access
+
+wlan NEM-WRL-USR 1 NEM-WRL-USR
+ ccx aironet-iesupport
+ radio dot11a
+ security dot1x authentication-list {{ rad_auth_me }}
+ no shutdown
+
+!
+! # NEM-GuestWiFi
+!
+wlan NEM-GuestWiFi 2 NEM-GuestWiFi
+ band-select
+ mac-filtering {{ rad_authz_me }}
+ no security ft adaptive
+ no security wpa
+ no security wpa wpa2
+ no security wpa wpa2 ciphers aes
+ no security wpa akm dot1x
+ no shutdown
+
+! # ADD WLAN- AND POLICY-PROFILES TO POLICY TAG
+
+wireless tag policy {{ location_abbr }}-POLICY-TAG
+ description "Local policy tag for WLANs"
+ wlan NEM-WRL-USR policy {{ location_abbr }}-POLICY-PR
+ wlan NEM-GuestWiFi policy {{ location_abbr }}_CWA_LOCAL_INET_PR

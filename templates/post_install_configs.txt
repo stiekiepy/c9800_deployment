@@ -1,0 +1,16 @@
+##
+### POST CONFIGS TO DO AFTER INSTALL AND WLC IS UP WITH APS CONNECTED
+##
+
+1. Encrypt passwords
+ 
+ password encryption aes
+ 
+2. Add wlc to solarwinds and prime
+
+3. Add smart licensing
+   Create virtual account
+   
+4. Assign APs to tags
+
+5. Test corp and guest wifi

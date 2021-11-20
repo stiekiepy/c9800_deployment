@@ -1,0 +1,12 @@
+snmp-server community N3WMonT RO
+ snmp-server host {{ sw_server }} N3WMonT
+ snmp-server host {{ prime_server }} N3WMonT 
+ snmp-server manager
+
+!
+! SET TIMEZONE SUMMER-TIME TO AREA WHERE THIS CONTROLLER IS
+!
+! Ex: clock summer-time
+
+ntp server {{ ntp_server }}
+clock timezone {{ timezone }} 1 0
