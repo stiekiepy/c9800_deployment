@@ -1,0 +1,11 @@
+ip access-list extended GuestRedirect
+ 1 deny   ip any host 10.70.34.55
+ 2 deny   ip host 10.70.34.55 any
+ 3 deny   ip host 10.60.3.1 any
+ 4 deny   ip any host 10.60.3.1
+ 5 deny   udp any eq domain any
+ 6 deny   udp any any eq domain
+ 7 permit ip any any
+
+ip access-list extended Internet
+ 1 permit ip any any

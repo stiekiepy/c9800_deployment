@@ -1,0 +1,35 @@
+! ##
+! ### RF PROFILES AND TAG CREATION
+! ##
+
+ap dot11 24ghz rf-profile DEO-24-RF-PR
+ rate RATE_11M disable
+ rate RATE_12M disable
+ rate RATE_18M disable
+ rate RATE_1M disable
+ rate RATE_24M mandatory
+ rate RATE_2M disable
+ rate RATE_5_5M disable
+ rate RATE_6M disable
+ rate RATE_9M disable
+ tx-power max 17
+ no shutdown
+
+ap dot11 5ghz rf-profile DEO-5g-RF-PR
+ channel add 165
+ channel chan-width 20
+ rate RATE_12M disable
+ rate RATE_18M disable
+ rate RATE_24M mandatory
+ rate RATE_6M disable
+ rate RATE_9M disable
+ tx-power max 17
+ tx-power min 11
+ no shutdown
+
+
+! ## ADD RF PROFILES TO RF TAG
+!
+wireless tag rf DEO-RF-TAG
+ 24ghz-rf-policy DEO-24-RF-PR
+ 5ghz-rf-policy DEO-5g-RF-PR

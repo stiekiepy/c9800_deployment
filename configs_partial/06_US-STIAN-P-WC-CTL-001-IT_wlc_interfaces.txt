@@ -1,0 +1,36 @@
+interface TwoGigabitEthernet0/0/0
+description US-STIAN-P-COL-P-IT: FiveGigabitEthernet1/0/40
+switchport trunk allowed vlan 320,99,420
+switchport mode trunk
+negotiation auto
+no snmp trap link-status
+cdp enable
+channel-group 10 mode active
+no shut
+
+interface TwoGigabitEthernet0/0/1
+description US-STIAN-P-COL-P-IT: FiveGigabitEthernet2/0/40
+switchport trunk allowed vlan 320,99,420
+switchport mode trunk
+negotiation auto
+no snmp trap link-status
+cdp enable
+channel-group 10 mode active
+no shut
+
+interface po10
+description US-STIAN-P-COL-P-IT
+switchport trunk allowed vlan 320,99,420
+switchport mode trunk
+no shut
+
+
+int vlan 99
+description Wireless Mgmt Interface
+ip add 1.1.1.1 255.255.255.0
+no shut
+
+
+ip route 0.0.0.0 0.0.0.0 1.1.1.254
+
+wireless management interface Vlan99

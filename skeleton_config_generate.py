@@ -49,7 +49,7 @@ def write_configs(task):
 def switch_interfaces(task):
     # Render configs from template
     template_path = f"templates/"
-    template = "20_switch_interfaces.j2"
+    template = "01_switch_interfaces.j2"
 
     ren_result = task.run(
         task=template_file,
@@ -62,7 +62,7 @@ def switch_interfaces(task):
 
     # Write configs to file
     config_path = f"configs/"
-    filename = f"{config_path}20_{task.host['wlc_name']}_switch_interfaces.txt"
+    filename = f"{config_path}01_{task.host['wlc_name']}_switch_interfaces.txt"
     content = task.host["switch_interfaces"]
 
     task.run(task=write_file,

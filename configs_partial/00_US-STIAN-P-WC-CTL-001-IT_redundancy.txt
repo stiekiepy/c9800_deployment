@@ -1,0 +1,6 @@
+!WLC-1# 
+ chassis redundancy ha-interface local-ip 169.254.0.1 /24 remote-ip 169.254.0.2 
+
+!WLC-2# 
+ chassis redundancy ha-interface local-ip 169.254.0.2  /24 remote-ip 169.254.0.1 
+

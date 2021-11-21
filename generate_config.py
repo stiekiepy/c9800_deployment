@@ -1,4 +1,4 @@
-#!/usr/bin/python
+
 from nornir import InitNornir
 from nornir_jinja2.plugins.tasks import template_file
 from nornir_utils.plugins.functions import print_result
@@ -9,10 +9,9 @@ import ipdb
 
 
 def redundancy(task):
-    print("REDUNDANCY START")
     # Render configs from template
     template_path = f"templates/"
-    template = "00_redundancy.j2"
+    template = "02_redundancy.j2"
 
     ren_result = task.run(
         task=template_file,
@@ -25,7 +24,7 @@ def redundancy(task):
 
     # Write configs to file
     config_path = f"configs_partial/"
-    filename = f"{config_path}00_{task.host['wlc_name']}_redundancy.txt"
+    filename = f"{config_path}02_{task.host['wlc_name']}_redundancy.txt"
     content = task.host["redundancy"]
 
     task.run(task=write_file,
@@ -379,6 +378,10 @@ def get_nornir_cfg():
 
 
 if __name__ == "__main__":
+    import menu
+    menu.main()
+    choice = menu.main()
+
     nr = get_nornir_cfg()
 
     result = nr.run(

@@ -1,0 +1,8 @@
+vlan 320
+name nem-wrl-usr
+
+vlan 420
+name nem-guestwifi
+
+vlan 99
+name IN-BAND-MANAGEMENT
