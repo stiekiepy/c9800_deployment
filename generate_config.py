@@ -378,9 +378,9 @@ def get_nornir_cfg():
 
 
 if __name__ == "__main__":
-    import menu
-    menu.main()
-    choice = menu.main()
+    #    import menu
+    #    menu.main()
+    #    choice = menu.main()
 
     nr = get_nornir_cfg()
 

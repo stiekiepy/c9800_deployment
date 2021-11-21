@@ -16,3 +16,4 @@
 2021-11-21 10:34:51,472 -  nornir.core -     INFO -        run() - Running task 'Main task call here' with args {} on 2 hosts
 2021-11-21 10:34:51,484 -  nornir.core -     INFO -        run() - Running task 'switch_interfaces' with args {} on 1 hosts
 2021-11-21 10:35:06,795 -  nornir.core -     INFO -        run() - Running task 'Main task call here' with args {} on 1 hosts
+2021-11-21 10:39:22,504 -  nornir.core -     INFO -        run() - Running task 'Main task call here' with args {} on 1 hosts
