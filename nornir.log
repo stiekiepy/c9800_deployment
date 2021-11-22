@@ -17,3 +17,16 @@
 2021-11-21 10:34:51,484 -  nornir.core -     INFO -        run() - Running task 'switch_interfaces' with args {} on 1 hosts
 2021-11-21 10:35:06,795 -  nornir.core -     INFO -        run() - Running task 'Main task call here' with args {} on 1 hosts
 2021-11-21 10:39:22,504 -  nornir.core -     INFO -        run() - Running task 'Main task call here' with args {} on 1 hosts
+2021-11-21 10:44:15,922 -  nornir.core -     INFO -        run() - Running task 'Main task call here' with args {} on 1 hosts
+2021-11-21 10:44:23,731 -  nornir.core -     INFO -        run() - Running task 'Main task call here' with args {} on 2 hosts
+2021-11-21 10:44:23,742 -  nornir.core -     INFO -        run() - Running task 'switch_interfaces' with args {} on 1 hosts
+2021-11-21 10:47:26,418 -  nornir.core -     INFO -        run() - Running task 'Main task call here' with args {} on 2 hosts
+2021-11-21 10:47:26,430 -  nornir.core -     INFO -        run() - Running task 'switch_interfaces' with args {} on 1 hosts
+2021-11-21 10:51:00,420 -  nornir.core -     INFO -        run() - Running task 'Main task call here' with args {} on 2 hosts
+2021-11-21 10:51:00,434 -  nornir.core -     INFO -        run() - Running task 'switch_interfaces' with args {} on 1 hosts
+2021-11-21 10:51:07,770 -  nornir.core -     INFO -        run() - Running task 'Main task call here' with args {} on 1 hosts
+2021-11-22 12:55:01,608 -  nornir.core -     INFO -        run() - Running task 'Main task call here' with args {} on 1 hosts
+2021-11-22 12:55:37,474 -  nornir.core -     INFO -        run() - Running task 'Main task call here' with args {} on 2 hosts
+2021-11-22 12:55:37,486 -  nornir.core -     INFO -        run() - Running task 'switch_interfaces' with args {} on 1 hosts
+2021-11-22 12:56:47,608 -  nornir.core -     INFO -        run() - Running task 'Main task call here' with args {} on 2 hosts
+2021-11-22 12:56:47,621 -  nornir.core -     INFO -        run() - Running task 'switch_interfaces' with args {} on 1 hosts

@@ -1,3 +1,5 @@
+
+
 aaa new-model
 !
 !
@@ -31,8 +33,8 @@ aaa group server radius RAD_GROUP
 aaa authentication login {{ tac_auth_me }} local group TAC_GROUP
 aaa authentication enable default group TAC_GROUP enable
 aaa authentication dot1x {{ rad_auth_me }} group RAD_GROUP
-aaa authorization exec {{ tac_authz_me }} local group TAC_GROUP 
-aaa authorization network {{ rad_authz_me }} group RAD_GROUP 
+aaa authorization exec {{ tac_authz_me }} local group TAC_GROUP
+aaa authorization network {{ rad_authz_me }} group RAD_GROUP
 aaa accounting identity {{ rad_acct_me }} start-stop group RAD_GROUP
 aaa accounting exec {{ tac_acct_me }} start-stop group TAC_GROUP
 !
@@ -45,5 +47,3 @@ aaa server radius dynamic-author
  client 10.60.3.1 server-key eYbo@xPqwq#%VuM7
 !
 aaa session-id common
-
-

@@ -7,7 +7,7 @@ from nornir.plugins.inventory.simple import SimpleInventory
 from nornir.core.plugins.inventory import InventoryPluginRegister
 
 
-def render_configs(task):
+def render_skeleton(task):
     """
     Takes the variables in "inventory/hosts_skeleton.yaml" and renders _skeleton
     configs for both WLCs. Saves the rendered config as a dict attached to
@@ -62,7 +62,7 @@ def switch_interfaces(task):
 
     # Write configs to file
     config_path = f"configs/"
-    filename = f"{config_path}01_{task.host['wlc_name']}_switch_interfaces.txt"
+    filename = f"{config_path}{task.host['core_sw_name']}_switch_interfaces.txt"
     content = task.host["switch_interfaces"]
 
     task.run(task=write_file,
@@ -74,7 +74,7 @@ def switch_interfaces(task):
 def main(task):
 
     task.run(
-        task=render_configs
+        task=render_skeleton
     )
     task.run(
         task=write_configs,

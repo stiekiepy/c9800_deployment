@@ -23,7 +23,7 @@ def redundancy(task):
     task.host["redundancy"] = rendered_config
 
     # Write configs to file
-    config_path = f"configs_partial/"
+    config_path = f"configs/"
     filename = f"{config_path}02_{task.host['wlc_name']}_redundancy.txt"
     content = task.host["redundancy"]
 
@@ -322,9 +322,9 @@ def main(task):
     task.run(
         task=http_ssh
     )
-    task.run(
-        task=wlc_interfaces
-    )
+#    task.run(
+#        task=wlc_interfaces
+#    )
     task.run(
         task=guestredirect_internet_ACL
     )

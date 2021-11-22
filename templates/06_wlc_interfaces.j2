@@ -1,3 +1,6 @@
+
+
+
 interface {{ wlc_sw_intf_1 }}
 description {{ core_sw_name }}: {{ core_sw_intf_1 }}
 switchport trunk allowed vlan {{ client_vlan }},{{ wmi_vlan }},{{ guest_vlan }}
@@ -24,12 +27,10 @@ switchport trunk allowed vlan {{ client_vlan }},{{ wmi_vlan }},{{ guest_vlan }}
 switchport mode trunk
 no shut
 
-
 int vlan {{ wmi_vlan }}
 description Wireless Mgmt Interface
 ip add {{ wmi_ip }} {{ wmi_mask }}
 no shut
-
 
 ip route 0.0.0.0 0.0.0.0 {{ wmi_gw }}
 
