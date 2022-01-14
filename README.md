@@ -41,3 +41,7 @@ This script takes the variables in the file "hosts_skeleton.yaml" and generates 
 
 #### generate_config.py
 This script takes all the variables you filled out in "hosts.yaml, groups.yaml and defaults.yaml" and generates individual files in the *"/configs_partial"* folder. Lastly, it takes all those configs and generates one big config file. Benefits of this is you can take any partial config if you need it. Like just needing to update AAA etc.
+
+
+### Example diagram of a common deployment
+![c9800_deployment_github](https://user-images.githubusercontent.com/22822441/149586164-072e4bc8-4039-4f29-96c8-ad69717683d7.png)
