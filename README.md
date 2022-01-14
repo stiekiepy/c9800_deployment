@@ -1,5 +1,14 @@
-# c9800_deployment
-Wireless controller setup from scratch
+### Install the following modules:
+
+pip install nornir  
+pip install nornir_jinja2  
+pip install nornir_utils  
+
+**NOTE 12/11/2021:**
+If modules are missing let me know. I believe this is all you need but like anything, I could be missing something small.
+
+This was tested on Ubuntu but you should be able to install everything you need on any Linux distro. Create a python3 virtual environment to keep your python installation separate for this project. 
+
 
 ### SPECIFIC TEMPLATE COMMENTS
 *"c9800_deployment/templates"*
