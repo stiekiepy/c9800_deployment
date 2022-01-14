@@ -43,7 +43,7 @@ aaa accounting exec {{ tac_acct_me }} start-stop group TAC_GROUP
 !
 !
 aaa server radius dynamic-author
- client 10.70.34.55 server-key eYbo@xPqwq#%VuM7
- client 10.60.3.1 server-key eYbo@xPqwq#%VuM7
+ client {{  ise_server1 }} server-key {{ radius_key }}
+ client {{  ise_server2 }} server-key {{ radius_key }}
 !
 aaa session-id common

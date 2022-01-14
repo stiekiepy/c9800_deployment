@@ -5,32 +5,8 @@ from nornir_utils.plugins.functions import print_result
 from nornir_utils.plugins.tasks.files import write_file
 from nornir.plugins.inventory.simple import SimpleInventory
 from nornir.core.plugins.inventory import InventoryPluginRegister
+import glob
 import ipdb
-
-
-def redundancy(task):
-    # Render configs from template
-    template_path = f"templates/"
-    template = "02_redundancy.j2"
-
-    ren_result = task.run(
-        task=template_file,
-        template=template,
-        path=template_path,
-        **task.host
-    )
-    rendered_config = ren_result[0].result
-    task.host["redundancy"] = rendered_config
-
-    # Write configs to file
-    config_path = f"configs/"
-    filename = f"{config_path}02_{task.host['wlc_name']}_redundancy.txt"
-    content = task.host["redundancy"]
-
-    task.run(task=write_file,
-             filename=filename,
-             content=content
-             )
 
 
 def vlans(task):
@@ -308,11 +284,23 @@ def rf_tag_profile(task):
              )
 
 
+def combine_partial_configs(task):
+    config_dir = f"configs/"
+    dir = f"configs_partial/"
+    files = glob.glob(dir + '*.txt')
+    files.sort()
+
+    file_big = f"{config_dir}{task.host['wlc_name']}_full_config"
+
+    with open(file_big, 'wb') as fnew:
+        for f in files:
+            with open(f, 'rb') as fold:
+                for line in fold:
+                    fnew.write(line)
+
+
 def main(task):
 
-    task.run(
-        task=redundancy
-    )
     task.run(
         task=vlans
     )
@@ -322,9 +310,9 @@ def main(task):
     task.run(
         task=http_ssh
     )
-#    task.run(
-#        task=wlc_interfaces
-#    )
+    task.run(
+        task=wlc_interfaces
+    )
     task.run(
         task=guestredirect_internet_ACL
     )
@@ -346,7 +334,9 @@ def main(task):
     task.run(
         task=rf_tag_profile
     )
-
+    task.run(
+        task=combine_partial_configs
+    )
 
 ##
 ## Standard functions below for every nornir script ##
@@ -378,9 +368,6 @@ def get_nornir_cfg():
 
 
 if __name__ == "__main__":
-    #    import menu
-    #    menu.main()
-    #    choice = menu.main()
 
     nr = get_nornir_cfg()
 
@@ -388,5 +375,5 @@ if __name__ == "__main__":
         name="Main task call here",
         task=main,
     )
-#    print_result(result)
-    # ipdb.set_trace()
+# Comment out this line if you don't want to see the result output
+print_result(result)

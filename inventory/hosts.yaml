@@ -3,47 +3,47 @@ c9800_1:
   hostname: 10.0.0.10
   groups:
     - cisco_ios
-    - ccv
     - nam
+    - region1
   data:
-    country: US
-    location_name: DEO Office
-    location_abbr: DEO
-    oob_ip: 10.0.0.10
-    oob_gw: 10.0.0.1
-    oob_mask: 255.255.255.0
-    admin: wlcadmin
-    admin_passw: wlcpassword
-    wlc_name: US-STIAN-P-WC-CTL-001-IT
-    domain_name: stianliebenberg.com
-    ap_vlan: 330
-    ap_vname: wireless-ap-vlan
-    ap_vlan_gw: 192.168.1.254
-    ap_vlan_mask: 255.255.254.0
-    client_vlan: 320
-    client_vname: nem-wrl-usr
-    client_vlan_gw: 10.19.114.254
-    client_vlan_mask: 255.255.255.0
-    guest_vlan: 420
-    guest_vname: nem-guestwifi
-    wmi_vlan: 99
-    wmi_vname: IN-BAND-MANAGEMENT
-    wmi_ip: 1.1.1.1
-    wmi_mask: 255.255.255.0
-    wmi_gw: 1.1.1.254
+    country: country code; ex US
+    location_name: bulding name; ex Office Building A
+    location_abbr: 3 character abbreviation of location; ex ABC
+    oob_ip: oob ip of wlc1
+    oob_gw: default gateway of oob network
+    oob_mask: oob network subnet mask; ex 255.255.255.0
+    admin: admin account
+    admin_passw: adming password
+    wlc_name: network hostname of wlc
+    domain_name: something.com
+    ap_vlan: vlan on which aps reside
+    ap_vname: vlan name for ap network
+    ap_vlan_gw: default gateway for ap vlan
+    ap_vlan_mask: ap subnet mask; ex 255.255.255.0
+    client_vlan: corp ssid vlan id; ex 999
+    client_vname: corp ssid vlan name
+    client_vlan_gw: corp ssid vlan default gateway; ex SVI is on core switch
+    client_vlan_mask: corp ssid subnet mask; ex 255.255.255.0
+    guest_vlan: guest ssid vlan id
+    guest_vname: guest vlan name
+    wmi_vlan: wireless mgmg interface vlan id
+    wmi_vname: wireless mgmt interface vlan name
+    wmi_ip: wireless mgmgt interface ip address; ex could be same as oob network or not
+    wmi_mask: wireless mgmt interface subnet mask; ex 255.255.255.0
+    wmi_gw: wireless mgmt subnet default gateway
     redun_ip_1: 169.254.0.1
     redun_ip_2: 169.254.0.2
     redund_ip_mask: /24
-    core_sw_name: US-STIAN-P-COL-P-IT
-    core_sw_mgmt_1: FiveGigabitEthernet1/0/39
-    core_sw_mgmt_2: FiveGigabitEthernet2/0/39
-    core_sw_intf_1: FiveGigabitEthernet1/0/40
-    core_sw_intf_2: FiveGigabitEthernet2/0/40
-    core_lag_intf1: 40
-    core_sw_intf_3: FiveGigabitEthernet1/0/41
-    core_sw_intf_4: FiveGigabitEthernet2/0/41
-    core_lag_intf2: 41
-    wlc_sw_intf_1: TwoGigabitEthernet0/0/0
-    wlc_sw_intf_2: TwoGigabitEthernet0/0/1
-    lag_intf: 10
-    timezone: MST
+    core_sw_name: core switch WLCs connect to, hostname
+    core_sw_mgmt_1: core switch interface going to wlc1 oob; ex FiveGigabitEthernet1/0/39
+    core_sw_mgmt_2: core switch interface going to wlc2 oob; ex FiveGigabitEthernet2/0/39
+    core_sw_intf_1: core switch interface going to wlc1 data intf; ex FiveGigabitEthernet1/0/40
+    core_sw_intf_2: core switch interface going to wlc1 data intf; ex FiveGigabitEthernet1/0/41
+    core_lag_intf1: port-channel number going to wlc1; ex 40
+    core_sw_intf_3: core switch interface going to wlc2 data intf; ex FiveGigabitEthernet2/0/40
+    core_sw_intf_4: core switch interface going to wlc2 data intf; ex FiveGigabitEthernet2/0/41
+    core_lag_intf2: port-channel number going to wlc2; ex 41
+    wlc_sw_intf_1: wlc1 data interface name; ex TwoGigabitEthernet0/0/0
+    wlc_sw_intf_2: wlc1 data interface name; ex TwoGigabitEthernet0/0/1
+    lag_intf: port-channel number on wlc going to switch; ex 10
+    timezone: 3 char timezone; ex MST

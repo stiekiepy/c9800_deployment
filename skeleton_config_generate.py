@@ -29,14 +29,14 @@ def render_skeleton(task):
     task.host["rendered_config"] = rendered_config
 
 
-def write_configs(task):
-    """
-    Takes the dict object attached to task.host called "rendered_config" and writes
-    that to a file in "configs/".
-
-    returns: nothing
-    """
-    config_path = f"configs/"
+# def write_configs(task):
+#    """
+#    Takes the dict object attached to task.host called "rendered_config" and writes
+#    that to a file in "configs/".
+#
+#    returns: nothing
+#    """
+    config_path = f"configs_skeleton/"
     filename = f"{config_path}{task.host['wlc_name']}_skeleton_config.txt"
     content = task.host["rendered_config"]
 
@@ -61,9 +61,34 @@ def switch_interfaces(task):
     task.host["switch_interfaces"] = rendered_config
 
     # Write configs to file
-    config_path = f"configs/"
+    config_path = f"configs_skeleton/"
     filename = f"{config_path}{task.host['core_sw_name']}_switch_interfaces.txt"
     content = task.host["switch_interfaces"]
+
+    task.run(task=write_file,
+             filename=filename,
+             content=content
+             )
+
+
+def redundancy(task):
+    # Render configs from template
+    template_path = f"templates/"
+    template = "02_redundancy.j2"
+
+    ren_result = task.run(
+        task=template_file,
+        template=template,
+        path=template_path,
+        **task.host
+    )
+    rendered_config = ren_result[0].result
+    task.host["redundancy"] = rendered_config
+
+    # Write configs to file
+    config_path = f"configs_skeleton/"
+    filename = f"{config_path}{task.host['wlc_name']}_redundancy.txt"
+    content = task.host["redundancy"]
 
     task.run(task=write_file,
              filename=filename,
@@ -76,9 +101,14 @@ def main(task):
     task.run(
         task=render_skeleton
     )
-    task.run(
-        task=write_configs,
-    )
+
+#    task.run(
+#        task=switch_interfaces,
+#    )
+
+#    task.run(
+#        task=redundancy
+#    )
 
 
 ##
@@ -119,8 +149,13 @@ if __name__ == "__main__":
     )
 
     c9800_1_nr = nr.filter(name="c9800_1")
-    c9800_1_result = c9800_1_nr.run(
+    c9800_1_switch_intf = c9800_1_nr.run(
         task=switch_interfaces,
     )
 
-#    print_result(result)
+    c9800_1_nr = nr.filter(name="c9800_1")
+    c9800_1_redundancy = c9800_1_nr.run(
+        task=redundancy,
+    )
+
+    print_result(result)

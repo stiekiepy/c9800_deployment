@@ -1,11 +1,12 @@
 ---
-username: stian
-password: stian
+username: wlc admin username
+password: wlc admin password
 data:
-    prime_server: 10.71.197.99
-    tacacs_key: digforGold
-    radius_key: myradiusPassw0rd
-    tac_auth_me: tacAutheMethod
+    snmp_user1: Your snmp username for RO etc
+    prime_server: if you have one prime server, ip goes here
+    tacacs_key: mytacacskey
+    radius_key: myradiuskey
+    tac_auth_me: tacAutheMethod     # My preferred AAA names for auth, authz and acct
     tac_authz_me: tacAutheZMethod
     tac_acct_me: tacAccMethod
     rad_auth_me: radAutheMethod

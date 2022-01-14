@@ -10,72 +10,24 @@ cisco_ios:
 
 
 # NORTH AMERICA
+# These are just examples. You can have static variables based on "bigger" regions served by two
+# radius servers like a country, followed by smaller regions like states/provinces that have their
+# own syslog,ntp servers and so forth.
+
+# Nornir looks up variables in a hierarchy fashion. Under hosts.yaml it will go to the first group
+# and look for the variable name. If it's not found it will go to the second group and look for the
+# variable etc. Priority goes from hosts.yaml --> groups.yaml --> defaults.yaml.
+
 nam:
   data:
-    ntp_server: 10.19.253.80
-    ise_server1: 10.70.34.55
-    ise_server2: 10.60.3.1
+    ntp_server: ip of this regions ntp server
+    ise_server1: ip of this regions radius server
+    ise_server2: ip of this regions second radius server
 
-ccv:
+region1:
   data:
-    sw_server: 172.17.104.203
-
-usa:
-  data:
-    sw_server: 10.71.197.100
-
-bor:
-  data:
-    sw_server: 10.26.0.28
-
-mus:
-  data:
-    sw_server: 10.19.1.28
-
-pen:
-  data:
-    sw_server: 10.80.10.23
-    ise_server1: 10.80.10.11
-    ise_server2: 10.70.34.55
-
-
-# SOUTH AMERICA
-sam:
-  data:
-    ntp_server: 10.120.203.30
-
-caj:
-  data:
-    sw_server: 10.20.5.204
-    ise_server1: 10.20.5.115
-    ise_server2: 10.120.203.100
-
-mer:
-  data:
-    sw_server: 10.120.163.77
-    ise_server1: 10.120.203.100
-    ise_server2: 10.120.203.101
-
-cer:
-  data:
-    sw_server: 10.116.22.48
-    ise_server1: 10.113.0.36
-    ise_server2: 10.120.203.100
-
-
-# AFRICA
-afr:
-  data:
-    ntp_server: 10.222.12.222
-    sw_server: 10.222.1.239
-    ise_server1: 10.223.2.158
-    ise_server2: 10.70.34.55
-
-
-# AUSTRALIA
-aus:
-  data:
-    ntp_server: 10.222.12.222
-    sw_server: 10.96.20.170
-    ise_server1: 10.96.20.139
-    ise_server2: 10.70.34.55
+    sw_server: syslog server for this region or snmp server
+    ise_server1: ip of this regions radius server
+    ise_server2: ip of this regions second radius server
+    ip_helper1: ip of DHCP server
+    ip_helper2: ip of second DHCP server

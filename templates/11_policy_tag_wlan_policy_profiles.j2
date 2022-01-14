@@ -1,9 +1,9 @@
 
-
-! ### CREATE POLICY PROFILE AND WLAN PROFILE ###
-!
-! ### POLICY PROFILES
-!
+!#
+!#  CREATE POLICY PROFILE AND WLAN PROFILE 
+!#
+!#  POLICY PROFILES
+!#
 
 wireless profile policy {{ location_abbr }}-POLICY-PR
  description "{{ location_abbr }} data WLAN Policy Profile"
@@ -22,22 +22,23 @@ wireless profile policy {{ location_abbr }}_CWA_LOCAL_INET_PR
  no shutdown
 
 
-! ### WLAN PROFILES ###
+!#  WLAN PROFILES
 !
-! # NEM-WRL-USR
+!# <paste your corporate SSID name here>
 !
 aaa attribute list wlan_lobby_access
 
-wlan NEM-WRL-USR 1 NEM-WRL-USR
+wlan <CORP_SSID> 1 <CORP_SSID>
  ccx aironet-iesupport
  radio dot11a
  security dot1x authentication-list {{ rad_auth_me }}
  no shutdown
 
-!
-! # NEM-GuestWiFi
-!
-wlan NEM-GuestWiFi 2 NEM-GuestWiFi
+!#
+!#  <paste your corporate guest sside name here>
+!#
+
+wlan <GUEST_SSID> 2 <GUEST_SSID>
  band-select
  mac-filtering {{ rad_authz_me }}
  no security ft adaptive
@@ -47,9 +48,12 @@ wlan NEM-GuestWiFi 2 NEM-GuestWiFi
  no security wpa akm dot1x
  no shutdown
 
-! # ADD WLAN- AND POLICY-PROFILES TO POLICY TAG
+
+!#
+!# ADD WLAN- AND POLICY-PROFILES TO POLICY TAG
+!#
 
 wireless tag policy {{ location_abbr }}-POLICY-TAG
  description "Local policy tag for WLANs"
- wlan NEM-WRL-USR policy {{ location_abbr }}-POLICY-PR
- wlan NEM-GuestWiFi policy {{ location_abbr }}_CWA_LOCAL_INET_PR
+ wlan <CORP_SSID> policy {{ location_abbr }}-POLICY-PR
+ wlan <GUEST_SSID> policy {{ location_abbr }}_CWA_LOCAL_INET_PR

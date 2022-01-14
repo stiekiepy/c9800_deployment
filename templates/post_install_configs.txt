@@ -6,10 +6,9 @@
  
  password encryption aes
  
-2. Add wlc to solarwinds and prime
+2. Add wlc to monitoring servers (Solarwinds, Prime etc)
 
 3. Add smart licensing
-   Create virtual account
    
 4. Assign APs to tags
 

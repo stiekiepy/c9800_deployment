@@ -1,7 +1,9 @@
-!WLC-1# 
+
+!# WLC-1
  chassis redundancy ha-interface local-ip {{ redun_ip_1 }} {{ redund_ip_mask }} remote-ip {{ redun_ip_2 }} 
 
-!WLC-2# 
+
+!# WLC-2
  chassis redundancy ha-interface local-ip {{ redun_ip_2 }}  {{ redund_ip_mask }} remote-ip {{ redun_ip_1 }} 
 
 

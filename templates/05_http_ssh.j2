@@ -4,7 +4,10 @@ wireless country {{ country }}
 
 ip ssh source-interface Vlan{{ wmi_vlan }}
 
-!Restart HTTP server after you apply. "no ip http...." on both http and http secure-server
+!#  Restart HTTP/HTTPS servers after you apply. 
+!#  "no ip http...." on both http and http secure-server
+!#
+
 ip http server
 ip http authentication aaa login-authentication {{ tac_auth_me }}
 ip http authentication aaa exec-authorization {{ tac_authz_me }}

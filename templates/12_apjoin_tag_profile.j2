@@ -1,25 +1,21 @@
 
 
-! ##
-! ### AP JOIN PROFILE AND AP JOIN TAG ###
-
-! Don't need this part, don't paste in new wlc's
-!no key config-key password-encrypt N3wm0nt1
-
+!#
+!#  AP JOIN PROFILE AND AP JOIN TAG ###
 
 
 ap profile {{ location_abbr }}-AP-JOIN-PR
  description "{{ location_abbr }} AP Settings"
- mgmtuser username apadmin password 8 ]iQ`gGIZGSPNgObPfbFBaV^SRbENDiBHcAAB secret 8 AGhXIG\YZchBFLc_REQB`HPeDYaVXdfTbAAB
+ mgmtuser username apadmin password 8 <insert ap admin password here>
  qos-map trust-dscp-upstream
  ssh
  syslog host {{ sw_server }}
  syslog level errors
 
 
+!# ADD TO SITE TAG CREATED FOR AP JOIN PROFILE
+!#
 
-! ## Add to site tage created for AP Join Profile
-!
 wireless tag site {{ location_abbr }}-SITE-TAG
  ap-profile {{ location_abbr }}-AP-JOIN-PR
  description "{{ location_abbr }} site tag"

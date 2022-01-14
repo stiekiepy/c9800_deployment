@@ -1,9 +1,10 @@
 
-#
-## mgmt
-#
+!#
+!# PORTS GOING TO WLC MGMT INTERFACES (Usually Gi0)
+!#
+
 interface {{ core_sw_mgmt_1 }}
- description {{ country }}-{{ location_abbr }}-P-WC-CTL-001-IT mgmt
+ description {{ country }}-{{ location_abbr }}-<insert wlc1 hostname>
  switchport access vlan {{ wmi_vlan }}
  switchport mode access
  spanning-tree portfast
@@ -11,7 +12,7 @@ interface {{ core_sw_mgmt_1 }}
  no shut
 
 interface {{ core_sw_mgmt_2 }}
- description {{ country }}-{{ location_abbr }}-P-WC-CTL-002-IT mgmt
+ description {{ country }}-{{ location_abbr }}-<insert wlc2 hostname>
  switchport access vlan {{ wmi_vlan }}
  switchport mode access
  spanning-tree portfast
@@ -19,11 +20,12 @@ interface {{ core_sw_mgmt_2 }}
  no shut
 
 
-!
-!! DATA INTERFACES
-!
-! WLC 1
-!
+!#
+!# PORTS GOING TO WLC DATA INTERFACES
+!#
+!# WLC 1
+!#
+
 interface {{ core_sw_intf_1 }}
  description {{ wlc_name }}
  switchport trunk allowed vlan {{ client_vlan }},{{ wmi_vlan }},{{ guest_vlan }}
@@ -46,9 +48,10 @@ interface Port-channel{{ core_lag_intf1 }}
  no shut
 
 
-!
-! WLC 2
-!
+!#
+!# WLC 2
+!#
+
 interface {{ core_sw_intf_3 }}
  description {{ wlc_name2 }}
  switchport trunk allowed vlan {{ client_vlan }},{{ wmi_vlan }},{{ guest_vlan }}
@@ -71,14 +74,14 @@ interface Port-channel{{ core_lag_intf2 }}
  no shut
 
 
-#
-## SVIs for vlans
-#
+!#
+!# SVIs for vlans
+!#
 interface Vlan{{ client_vlan }}
  description {{ client_vname }}
  ip address {{ client_vlan_gw }} {{ client_vlan_mask }}
- ip helper-address 10.70.34.68
- ip helper-address 10.70.34.69
+ ip helper-address {{ ip_helper1 }}
+ ip helper-address {{ ip_helper2 }}
  ip ospf network broadcast
  ip ospf 100 area 0
  no shut
@@ -86,8 +89,8 @@ interface Vlan{{ client_vlan }}
 interface Vlan{{ ap_vlan }}
  description {{ ap_vname }}
  ip address {{ ap_vlan_gw }} {{ ap_vlan_mask }}
- ip helper-address 10.70.34.68
- ip helper-address 10.70.34.69
+ ip helper-address {{ ip_helper1 }}
+ ip helper-address {{ ip_helper2 }}
  ip ospf network broadcast
  ip ospf 100 area 0
  no shut
@@ -97,14 +100,14 @@ interface Vlan{{ ap_vlan }}
 !
 !interface {{ core_sw_intf_red_1 }}
 ! description RP port {{ wlc_name }}
-! switchport access vlan 950
+! switchport access vlan <insert random L2 vlan used for RP>
 ! switchport mode access
 ! spanning-tree portfast
 ! no shut
 
 !interface {{ core_sw_intf_red_2 }}
 ! description RP port {{ wlc_name2 }}
-! switchport access vlan 950
+! switchport access vlan <insert random L2 vlan used for RP>
 ! switchport mode access
 1 spanning-tree portfast
 ! no shut
