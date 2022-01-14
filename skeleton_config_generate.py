@@ -28,14 +28,6 @@ def render_skeleton(task):
     rendered_config = ren_result[0].result
     task.host["rendered_config"] = rendered_config
 
-
-# def write_configs(task):
-#    """
-#    Takes the dict object attached to task.host called "rendered_config" and writes
-#    that to a file in "configs/".
-#
-#    returns: nothing
-#    """
     config_path = f"configs_skeleton/"
     filename = f"{config_path}{task.host['wlc_name']}_skeleton_config.txt"
     content = task.host["rendered_config"]
@@ -101,14 +93,6 @@ def main(task):
     task.run(
         task=render_skeleton
     )
-
-#    task.run(
-#        task=switch_interfaces,
-#    )
-
-#    task.run(
-#        task=redundancy
-#    )
 
 
 ##
