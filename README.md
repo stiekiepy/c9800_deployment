@@ -1,11 +1,14 @@
+This is a work in progress. Do not run any code that you're not sure of what it does. 
+
+**NOTE 12/11/2021:**
+If modules are missing let me know. I believe this is all you need but like anything, I could be missing something small.
+
 ### Install the following modules:
 
 pip install nornir  
 pip install nornir_jinja2  
 pip install nornir_utils  
 
-**NOTE 12/11/2021:**
-If modules are missing let me know. I believe this is all you need but like anything, I could be missing something small.
 
 This was tested on Ubuntu but you should be able to install everything you need on any Linux distro. Create a python3 virtual environment to keep your python installation separate for this project. 
 
@@ -25,7 +28,7 @@ The WMI vlan is the vlan and IP to which APs will connect to associate to the co
 If your AAA configurations are different just update the template here otherwise this works perfect.
 
 #### 07_guestredirect_internet_ACL.j2
-These two ACLs work with the local Guest SSID so users are allowed to contact the ISE server to get the portal before being allowed on the network. If your ACL names are different, just change the names here. These ACLs are pushed down from ISE.
+These two ACLs work with the local Guest SSID so users are allowed to contact the ISE server to get the portal before being allowed on the network. If your ACL names are different, just change the names here. When you pass authentication from ISE, ISE sends the names of the ACLs to the controller which controls what the client can do.
 
 #### 08_snmp_ntp.j2
 The variable "sw_server" could be your syslog/solarwinds/snmp server. You can change the variable if you want to anything to represent your org.
