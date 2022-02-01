@@ -21,15 +21,16 @@ ip domain name {{ domain_name }}
 crypto key generate rsa modulus 2048
 ip ssh version 2
 
-
+!REMOVE "login local" when you paste in the AAA configs when your device is ready and up via SSH
 line con 0
 privilege level 15
-!login authentication CONSOLE
 
 line vty 0 15
+login local
 transport input ssh
 
 line vty 16 50
+login local
 transport input ssh
 
 cdp run
